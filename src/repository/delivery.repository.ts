@@ -11,7 +11,7 @@ export class DeliveryRepository {
       axios.post('https://sheetdb.io/api/v1/lia2dzpfqpubn', {
             name : name,
             numberP : numberP,
-            numberC : numberP,
+            numberC : numberC,
             type : type,
             cep : cep,
             rua: rua,
