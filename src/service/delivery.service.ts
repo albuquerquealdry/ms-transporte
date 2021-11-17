@@ -12,9 +12,12 @@ export class DeliveryService {
   
   async create(createDeliveryDto: CreateDeliveryDto) {
   let cepData  = await cepSearch(createDeliveryDto['cep']);
+  if(createDeliveryDto['type'] === 'Rápida : R$ 30,00'){
+    let status = 'Faltam 3 Dias para sua entrega'  
+  }
   const delivery = await this.deliveryRepository.sheet(createDeliveryDto['name'],
   createDeliveryDto['numberP'],createDeliveryDto['numberC'],createDeliveryDto['type'],
-  cepData['cep'],cepData['logradouro'],cepData['bairro'],cepData['localidade'],cepData['uf']) 
+  cepData['cep'],cepData['logradouro'],cepData['bairro'],cepData['localidade'],cepData['uf'], status) 
   return delivery
   };
 
