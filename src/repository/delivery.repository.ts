@@ -6,12 +6,18 @@ import { Injectable } from '@nestjs/common';
 export class DeliveryRepository {
     constructor(){
     }    
-    sheet(name, numberP, numberC, type){
+    sheet(name, numberP, numberC, type, cep , rua, bairro, cidade, uf){
         axios.post('https://sheetdb.io/api/v1/059zyale8msd5', {
             name : name,
             numberP : numberP,
             numberC : numberP,
-            type : type
+            type : type,
+            cep : cep,
+            rua: rua,
+            bairro : bairro,
+            cidade : cidade,
+            uf : uf
+
           }) .then((response) =>{
             return 'teste'
           }).catch((erro)=>{`Deu erro \n ${erro}`})
