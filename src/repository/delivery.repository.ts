@@ -20,7 +20,7 @@ export class DeliveryRepository {
             uf : uf,
             idEntrega :'id',
             status : 'Pedido realizado',
-            hour : now.getUTCHours
+            hour : now.getUTCHours()
           }) .then((response) =>{
             return 'teste'
           }).catch((erro)=>{`Deu erro \n ${erro}`})
