@@ -8,7 +8,7 @@ export class DeliveryRepository {
     }    
     sheet(name, numberP, numberC, type, cep , rua, bairro, cidade, uf){
      let now = new Date  
-      axios.post('https://sheetdb.io/api/v1/lia2dzpfqpubn', {
+      axios.post('https://sheetdb.io/api/v1/8yylocsb92p9x', {
             name : name,
             numberP : numberP,
             numberC : numberC,
