@@ -1,11 +1,9 @@
 import axios from 'axios'
 import { Injectable } from '@nestjs/common';
 
-
 @Injectable()
 export class DeliveryRepository {
-    constructor(){
-    }    
+    constructor(){}    
     sheet(name, numberP, numberC, type, cep , rua, bairro, cidade, uf){
      let now = new Date  
       axios.post('https://sheetdb.io/api/v1/8yylocsb92p9x', {
@@ -21,8 +19,10 @@ export class DeliveryRepository {
             idEntrega :'id',
             status : 'Pedido realizado',
             hour : now.getTime()
-          }) .then((response) =>{
-            return 'teste'
-          }).catch((erro)=>{`Deu erro \n ${erro}`})
+          }) .then((response)=>{
+            return 'OK'
+          }).catch((erro)=>{
+            return 'ERRO'
+          })
     }
 };

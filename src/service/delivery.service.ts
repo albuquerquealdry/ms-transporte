@@ -1,10 +1,7 @@
 import {  Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
 import { CreateDeliveryDto } from '../dto/create-delivery.dto';
-import { UpdateDeliveryDto } from '../dto/update-delivery.dto';
 import {DeliveryRepository} from '../repository/delivery.repository';
-const cepSearch = require('../repository/deliverysheet.repository');
+const cepSearch = require('../scripts/deliverysheet');
 
 @Injectable()
 export class DeliveryService {
@@ -13,31 +10,17 @@ export class DeliveryService {
   async create(createDeliveryDto: CreateDeliveryDto) {
   let cepData  = await cepSearch(createDeliveryDto['cep']);
   const delivery = await this.deliveryRepository.sheet(
+      //Dados direto da página HTML  
       createDeliveryDto['name'],
       createDeliveryDto['numberP'],
       createDeliveryDto['numberC'],
       createDeliveryDto['type'],
+      //Dados da repository Cep
       cepData['cep'],
       cepData['logradouro'],
       cepData['bairro'],
       cepData['localidade'],
-      cepData['uf']) 
-    return delivery
+      cepData['uf'])
+    return "Usuário Criado"
   };
-
-  findAll() {
-    return `This action returns all delivery`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} delivery`;
-  }
-
-  update(id: number, updateDeliveryDto: UpdateDeliveryDto) {
-    return `This action updates a #${id} delivery`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} delivery`;
-  }
 }

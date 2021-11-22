@@ -9,10 +9,15 @@ export class Delivery {
   name: string;
 
   @Prop()
-  age: number;
+  numberP: number;
 
   @Prop()
-  breed: string;
-}
+  numberC: string;
 
+  @Prop()
+  cep: string;
+
+  @Prop()
+  type: string;
+}
 export const DeliverySchema = SchemaFactory.createForClass(Delivery);
